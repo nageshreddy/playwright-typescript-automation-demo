@@ -50,15 +50,34 @@ test('GET /api/v2/berry - Verify response status code and body', async ({page}) 
 
     // Assert response body
     expect(responseBody).toEqual(expectedPayload);
-
     // Assert the response body
     expect(responseBody).not.toBe(null);
+});
+
+test('Verify berry data', async () => {
+    // Verify each berry data
     expect(verifyIndividualBerryData()).toBeTruthy();
+});
+test('Verify berry id', async () => {
+    //Verify each berry id
     expect(verifySpecificBerryData).toBeTruthy();
+});
+
+test('Verify berry api error handling', async () => {
+    //Verify berry error handling
     expect(verifyErrorHandling()).toBeTruthy();
+});
+
+test('Verify berry api rate limiting', async () => {
+    //Verify berry error handling
     expect(verifyRateLimiting()).toBeTruthy();
+});
+
+test('Verify berry api response contain an array', async () => {
+    //Verify berry rate limit
     expect(containsArray).toBeTruthy();
 });
+
 
 // Define the function to verify individual berry data
 async function verifyIndividualBerryData() {
@@ -112,7 +131,6 @@ async function verifySpecificBerryData(berryId: number) {
         console.error('Error:', error.message);
     }
 
-    // Define the function to verify filtering functionality
     async function verifyFiltering() {
         try {
             // Make a GET request with query parameters to filter the response data
@@ -136,7 +154,6 @@ async function verifySpecificBerryData(berryId: number) {
 
 }
 
-// Define the function to verify error handling
 async function verifyErrorHandling() {
     try {
         // Make a GET request with an invalid parameter (e.g., non-existent query parameter)
