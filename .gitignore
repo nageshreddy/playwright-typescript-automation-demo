@@ -1,3 +1,8 @@
 /test-results
 /.DS_Store
 /inex.html
+/node_modules
+/.vscode
+/.idea
+/.history
+/.env.local

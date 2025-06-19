@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=k6
+      - INFLUXDB_HTTP_AUTH_ENABLED=false
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.44.1-jammy
+    container_name: playwright
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: ["npx", "playwright", "test"]
+    depends_on:
+      - influxdb
+      - grafana
+
+volumes:
+  influxdb_data:
+  grafana_data:
+  playwright_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /app/playwright-report
+      o: bind
