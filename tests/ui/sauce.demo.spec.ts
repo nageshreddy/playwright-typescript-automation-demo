@@ -25,7 +25,7 @@ test.describe('Load testdata', () => {
     console.log(`Navigated to ${uiBaseUrl}`);
   });
 
-  test.afterEach(async ({}, testInfo) => {
+  test.afterEach(async ({ }, testInfo) => {
     console.log(`Test completed: ${testInfo.title}`);
   });
 
@@ -37,8 +37,12 @@ test.describe('Load testdata', () => {
   test('First Tc: Sauce Demo login', async ({ page }) => {
     await page.fill('#user-name', users.standard.username);
     await page.fill('#password', users.standard.password);
-    await page.click('#login-button');  
-    await expect(page).toHaveTitle('Swag Labs', { timeout: 10000 });
+    await page.click('#login-button');
+   
+    const titleTagContent = await page.evaluate(() => {
+      return document.querySelector('title')?.textContent;
+    });
+    expect(titleTagContent).toBe('Swag Labs');
   });
 
   test('Second Tc: Standard user login using custom command', async ({ page }) => {
@@ -60,6 +64,9 @@ test.describe('Load testdata', () => {
 
   test('Fifth Tc: Performance glitch user login', async ({ page }) => {
     await login(page, users.performance.username, users.performance.password);
-    await expect(page.locator('title')).toHaveText('Swag Labs', { timeout: 1000 });
+    const titleTagContent = await page.evaluate(() => {
+      return document.querySelector('title')?.textContent;
+    });
+    expect(titleTagContent).toBe('Swag Labs');
   });
 });

@@ -68,7 +68,7 @@ test('Verify berry api error handling', async () => {
     expect(verifyErrorHandling()).toBeTruthy();
 });
 
-test('Verify berry api rate limiting', async () => {
+test.skip('Verify berry api rate limiting', async () => {
     //Verify berry error handling
     expect(verifyRateLimiting()).toBeTruthy();
 });

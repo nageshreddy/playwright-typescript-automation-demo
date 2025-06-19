@@ -6,3 +6,14 @@
 /.idea
 /.history
 /.env.local
+/.playwright-report
+/.playwright-report/data
+/.nyc_output
+/.cache
+/.next
+/.nuxt
+/.nuxt-data
+/.nuxt-generate
+/.nuxt/dist
+/.test_results
+/.index.html
