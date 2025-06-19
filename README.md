@@ -17,6 +17,9 @@ Use the following commands in your terminal to run Playwright tests in various m
 | Retry failures              | `npx playwright test --last-failed`                                          |
 | Generate HTML report        | `npx playwright test --reporter=html` + `npx playwright show-report`         |
 | Interactive selection CLI   | `npx playwright-cli-select run`                                              |
+| Visual test                 | `npx playwright test tests/visual/homepage.spec.ts`                          |
+| Updating snapshots          |  `npx playwright test --update-snapshots`                                    |  
+ 
 
 ---
 
@@ -33,6 +36,3 @@ Use the following commands in your terminal to run Playwright tests in various m
 - **`npx playwright-cli-select run`**: Launches an interactive test selector in the terminal.
 
 ---
-
-These commands follow the official Playwright Test CLI syntax and options :contentReference[oaicite:0]{index=0}.
-::contentReference[oaicite:1]{index=1}

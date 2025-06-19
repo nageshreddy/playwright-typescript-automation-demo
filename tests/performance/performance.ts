@@ -1,5 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import dotenv from 'dotenv';
+
 dotenv.config();
 
 const uiBaseUrl = process.env.UI_BASE_URL || 'https://fallback-url.com';
