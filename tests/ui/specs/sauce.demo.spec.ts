@@ -62,4 +62,12 @@ test.describe('Load testdata with Page Object Model', () => {
     const title = await loginPage.getTitleText();
     expect(title).toBe('Swag Labs');
   });
+
+  test('Sixth Tc: Invalid user login', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.login(users.invalid.username, users.invalid.password);
+
+    const error = await loginPage.getErrorMessage();
+    expect(error?.trim()).toBe('Epic sadface: Username and password do not match any user in this service');
+  });
 });

@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const uiBaseUrl = process.env.UI_BASE_URL || 'https://fallback-url.com';
+const apiBaseUrl = process.env.PI_BASE_URL || 'https://pokeapi.co/api/v2/berry';
 
 export const options = {
   vus: 10, // Number of virtual users
@@ -12,7 +12,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('https://pokeapi.co/api/v2/berry');
+  const res = http.get(apiBaseUrl);
 
   check(res, {
     'status is 200': (r) => r.status === 200,
